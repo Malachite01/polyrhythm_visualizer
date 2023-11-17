@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7977759340745520264
+--- !u!1 &6577471966605570431
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7977759340745520279}
-  - component: {fileID: 7977759340745520278}
-  - component: {fileID: 7977759340745520277}
+  - component: {fileID: 6577471966605570426}
+  - component: {fileID: 6577471966605570425}
+  - component: {fileID: 6577471966605570424}
   m_Layer: 0
   m_Name: Arc
   m_TagString: Untagged
@@ -18,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7977759340745520279
+--- !u!4 &6577471966605570426
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7977759340745520264}
+  m_GameObject: {fileID: 6577471966605570431}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,13 +33,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!120 &7977759340745520278
+--- !u!120 &6577471966605570425
 LineRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7977759340745520264}
+  m_GameObject: {fileID: 6577471966605570431}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -180,13 +180,13 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &7977759340745520277
+--- !u!114 &6577471966605570424
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7977759340745520264}
+  m_GameObject: {fileID: 6577471966605570431}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cb674550ccd99e448ed6e4384a4b3f3, type: 3}
@@ -198,4 +198,4 @@ MonoBehaviour:
   _ballPrefab: {fileID: 6089345282108755805, guid: 8cc57c8c7d724514688eda17f6e42961, type: 3}
   numberOfLoops: 50
   timeTofullCycle: 300
-  _sineWave: {fileID: 6906817218086384099, guid: ba5fe4fbc3d07cf4a8f75ccc6fc00e90, type: 3}
+  _sinePrefab: {fileID: 3085232057625347953, guid: 8f2e6ff2e54c5794db10823acb03bccc, type: 3}

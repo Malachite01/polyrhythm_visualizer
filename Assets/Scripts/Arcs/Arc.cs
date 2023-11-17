@@ -13,19 +13,23 @@ public class Arc : MonoBehaviour
     private float _velocity;
     public int numberOfLoops = 50;
     public int timeTofullCycle = 900;
-    [SerializeField] private GameObject _sineWave;
+    [SerializeField] private GameObject _sinePrefab;
     private SineObject _sineObject;
     private float _elapsedTime = 0f;
     private float _nextImpactTime;
     private bool _allowImpact = true;
 
 
+    private void Awake() {
+        _sinePrefab = Instantiate(_sinePrefab, transform.position, Quaternion.identity);
+    }
+
     private void Start() {
         _lineRenderer = GetComponent<LineRenderer>();
         _lineRenderer.positionCount = resolution;
         PlotArc();
         _ballPrefab = Instantiate(_ballPrefab, arcPoints[0], Quaternion.identity);
-        _sineObject = _sineWave.GetComponent<SineObject>();
+        _sineObject = _sinePrefab.GetComponent<SineObject>();
     }
 
     private void Update() {
