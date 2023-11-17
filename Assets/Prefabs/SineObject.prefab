@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _basicAmplitude: 0.01
   _maxAmplitude: 0.9
+  duration: 0.2
   _sineWave1: {fileID: 6906817218083013137}
   _sineWave2: {fileID: 6906817216632510567}
 --- !u!1001 &4323559230764763429
