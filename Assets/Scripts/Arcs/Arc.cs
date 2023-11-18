@@ -18,6 +18,8 @@ public class Arc : MonoBehaviour
     private float _elapsedTime = 0f;
     private float _nextImpactTime;
     private bool _allowImpact = true;
+    [NonSerialized]public AudioClip sfx;
+    private AudioSource _audioSource;
 
 
     private void Awake() {
@@ -30,6 +32,7 @@ public class Arc : MonoBehaviour
         PlotArc();
         _ballPrefab = Instantiate(_ballPrefab, arcPoints[0], Quaternion.identity);
         _sineObject = _sinePrefab.GetComponent<SineObject>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Update() {
@@ -87,6 +90,8 @@ public class Arc : MonoBehaviour
 
     private void GenerateImpact() {
         _sineObject.StartBounce();
+        _audioSource.clip = sfx;
+        _audioSource.Play();
         _allowImpact = true;
     }
 }

@@ -12,6 +12,7 @@ public class ArcsSpawner : MonoBehaviour
     public int numberOfArcs = 21;
     public float arcRadiusIncrement = 1f;
     private int _numberOfLoops;
+    [SerializeField] private AudioClip[] _audios;
 
     private void Start() {
         _arc = _arcPrefab.GetComponent<Arc>();
@@ -26,6 +27,7 @@ public class ArcsSpawner : MonoBehaviour
         GameObject arc = Instantiate(_arcPrefab, transform.position, Quaternion.identity);
         arc.GetComponent<Arc>().initialHalfCircleRadius = _radius * arcRadiusIncrement * (_arcs.Count + 1);
         arc.GetComponent<Arc>().numberOfLoops = _numberOfLoops;
+        arc.GetComponent<Arc>().sfx = _audios[_arcs.Count];
         _numberOfLoops -= 1;
         _arcs.Add(arc);
     }
