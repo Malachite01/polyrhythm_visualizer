@@ -17,7 +17,6 @@ public class Arc : MonoBehaviour
     private SineObject _sineObject;
     private float _elapsedTime = 0f;
     private float _nextImpactTime;
-    private bool _allowImpact = true;
     [NonSerialized]public AudioClip sfx;
     private AudioSource _audioSource;
 
@@ -33,6 +32,7 @@ public class Arc : MonoBehaviour
         _ballPrefab = Instantiate(_ballPrefab, arcPoints[0], Quaternion.identity);
         _sineObject = _sinePrefab.GetComponent<SineObject>();
         _audioSource = GetComponent<AudioSource>();
+        _nextImpactTime = CalculateNextImpactTime(_elapsedTime, 2*Mathf.PI * numberOfLoops / timeTofullCycle);
     }
 
     private void Update() {
@@ -41,6 +41,11 @@ public class Arc : MonoBehaviour
 
     private void MoveBallAlongArc() {
         _elapsedTime += Time.deltaTime;
+        if(_elapsedTime >= _nextImpactTime) {
+            GenerateImpact();
+           _nextImpactTime = CalculateNextImpactTime(_nextImpactTime, _velocity);
+        }
+        // Vector2 to store the next position of the ball
         Vector2 ballPosition = _ballPrefab.transform.position;
 
         float oneFullLoop = 2*Mathf.PI;
@@ -50,14 +55,7 @@ public class Arc : MonoBehaviour
         float modDistance = distance % maxAngle;      
         float adjustedDistance = modDistance >= Mathf.PI ? modDistance : maxAngle - modDistance;
 
-        if(_allowImpact) {
-           _nextImpactTime = CalculateNextImpactTime(_elapsedTime, _velocity);
-           _allowImpact = false;
-        }
-        if(_nextImpactTime < _elapsedTime) {
-            GenerateImpact();
-        }
-
+        // Move the ball along the arc
         ballPosition.x = transform.position.x + (initialHalfCircleRadius + lineWeight) * Mathf.Cos(adjustedDistance); 
         ballPosition.y = transform.position.y - (initialHalfCircleRadius + lineWeight) * Mathf.Sin(adjustedDistance); 
        _ballPrefab.transform.position = ballPosition;
@@ -92,6 +90,5 @@ public class Arc : MonoBehaviour
         _sineObject.StartBounce();
         _audioSource.clip = sfx;
         _audioSource.Play();
-        _allowImpact = true;
     }
 }
